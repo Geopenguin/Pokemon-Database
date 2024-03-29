@@ -12,6 +12,13 @@ namespace Pokemon_Database.Pages
             _logger = logger;
         }
 
+        /// <summary>
+        /// Collection of ICards
+        /// </summary>
+        [BindProperty(SupportsGet = true)]
+        public IEnumerable<ICards>? Cards { get; set; }
+
+
         public void OnGet()
         {
 
