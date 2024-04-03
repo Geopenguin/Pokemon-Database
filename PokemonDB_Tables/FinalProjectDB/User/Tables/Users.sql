@@ -1,0 +1,8 @@
+CREATE TABLE [User].[Users] (
+    [UserID] INT IDENTITY (1, 1) NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserID] ASC)
+);
+
+
+GO
+
