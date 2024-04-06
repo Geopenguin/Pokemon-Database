@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\..\..\Down
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonCardData", "..\..\..\Downloads\DataAccessDemo2\DataAccessDemo2\PersonData\PokemonCardData.csproj", "{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon WPF App", "Pokemon WPF App\Pokemon WPF App.csproj", "{9DABB04D-B366-4659-8D25-01D9609BFC6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
