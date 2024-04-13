@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokemon Database", "Pokemon Database.csproj", "{1C0F5E97-B269-41F7-8CE6-BB1384BF6A7E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\..\..\Downloads\DataAccessDemo2\DataAccessDemo2\DataAccess\DataAccess.csproj", "{A5AC459D-6C0A-4D6E-AD65-ECB3E0FEC3A7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonCardData", "..\..\..\Downloads\DataAccessDemo2\DataAccessDemo2\PersonData\PokemonCardData.csproj", "{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon WPF App", "Pokemon WPF App\Pokemon WPF App.csproj", "{9DABB04D-B366-4659-8D25-01D9609BFC6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokemon WPF App", "Pokemon WPF App\Pokemon WPF App.csproj", "{9DABB04D-B366-4659-8D25-01D9609BFC6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,18 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1C0F5E97-B269-41F7-8CE6-BB1384BF6A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C0F5E97-B269-41F7-8CE6-BB1384BF6A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C0F5E97-B269-41F7-8CE6-BB1384BF6A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C0F5E97-B269-41F7-8CE6-BB1384BF6A7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5AC459D-6C0A-4D6E-AD65-ECB3E0FEC3A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5AC459D-6C0A-4D6E-AD65-ECB3E0FEC3A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5AC459D-6C0A-4D6E-AD65-ECB3E0FEC3A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5AC459D-6C0A-4D6E-AD65-ECB3E0FEC3A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D51AA58C-05B9-4A7D-9F80-CCEBF8A0EAF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DABB04D-B366-4659-8D25-01D9609BFC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pokemon_WPF_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Name="Main">
     <Grid>
-
+        <TabControl x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
+            <TabItem Header="User Library">
+                <Frame x:Name="LibraryFrame" />
+            </TabItem>
+            <TabItem Header="Market">
+                <Frame x:Name="MarketFrame" />
+            </TabItem>
+            <TabItem Header="Gamble">
+                <Frame x:Name="GambleFrame" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

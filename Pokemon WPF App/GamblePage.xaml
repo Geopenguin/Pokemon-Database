@@ -1,0 +1,24 @@
+﻿<Page x:Class="Pokemon_WPF_App.GamblePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pokemon_WPF_App"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GamblePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="GamblingCardsListBox" SelectionMode="Single" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="GambleButton" Content="Gamble" Click="GambleButton_Click" Margin="5" />
+            <!--Button x:Name="ChooseCardButton" Content="Choose Card" Click="ChooseCardButton_Click" Margin="5" /-->
+        </StackPanel>
+    </Grid>
+</Page>
