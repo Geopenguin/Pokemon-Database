@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Configuration;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient; 
 
 namespace Pokemon_WPF_App
 {
@@ -52,6 +54,34 @@ namespace Pokemon_WPF_App
                 }
             }
         }
+
+
+        private void TestConnectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Query Example
+                    string query = "SELECT COUNT(*) FROM [Cards].[Cards]";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    int rowCount = (int)command.ExecuteScalar();
+
+                    MessageBox.Show($"Connection successful. Number of rows in Cards.Cards: {rowCount}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Connection failed. Error: {ex.Message}");
+                }
+            }
+        }
+
+
+
 
     }
 }

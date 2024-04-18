@@ -17,6 +17,9 @@
             <TabItem Header="Gamble">
                 <Frame x:Name="GambleFrame" />
             </TabItem>
+            <TabItem Header="Test Connection">
+                <Button x:Name="TestConnection" Content="Test Connection" Click="TestConnectionButton_Click"></Button>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
