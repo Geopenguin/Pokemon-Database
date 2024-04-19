@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 
 namespace Pokemon_WPF_App
 {
-    public partial class GamblePage : Page, INotifyPropertyChanged
+    public partial class GamblePage : Page
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
         private ObservableCollection<Card> allCards;
@@ -137,7 +137,6 @@ namespace Pokemon_WPF_App
 
                 // Execute the query
                 command.ExecuteNonQuery();
-                OnPropertyChanged(); 
             }
         }
 
