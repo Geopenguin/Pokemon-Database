@@ -14,11 +14,46 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="GamblingCardsListBox" SelectionMode="Single" />
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="GamblingCardsItemsControl">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="5" Margin="5">
+                            <Grid Width="200" Height="300">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
+
+                                <Image Grid.Row="1" Source="{Binding ImageUrl}" Stretch="UniformToFill" />
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding TrainerEffect}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" />
+                                </StackPanel>
+
+                                <Button Grid.Row="4" Content="Claim" Margin="5" Click="ClaimButton_Click"  />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <Button x:Name="GambleButton" Content="Gamble" Click="GambleButton_Click" Margin="5" />
-            <!--Button x:Name="ChooseCardButton" Content="Choose Card" Click="ChooseCardButton_Click" Margin="5" /-->
         </StackPanel>
     </Grid>
 </Page>

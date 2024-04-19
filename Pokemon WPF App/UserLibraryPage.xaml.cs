@@ -31,15 +31,15 @@ namespace Pokemon_WPF_App
 
             // Add some sample cards
             // ...
-            for (int i = 0; i < 6; i++) 
-            {
-                //currentUser.AddCard(new Card
-                //{
-                //    CardName = "Charizard " + i,
-                //    ImagePath = "/Images/Charizard.png",
-                //    HP = 78,
-                //});
-            }
+            //for (int i = 0; i < 6; i++) 
+            //{
+            //    currentUser.AddCard(new Card
+            //    {
+            //        CardName = "Charizard " + i,
+            //        ImagePath = "/Images/Charizard.png",
+            //        HP = 78,
+            //    });
+            //}
             // Set the data context for the UserLibraryPage
             DataContext = currentUser;
 
