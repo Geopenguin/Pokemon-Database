@@ -18,12 +18,13 @@
             <TextBox x:Name="SearchTextBox" Width="200" Margin="5" />
             <Button Content="Search" Click="SearchButton_Click" Margin="5" />
         </StackPanel>
-<!--Need to bind this -->
-        <ComboBox x:Name="EnergyTypeComboBox" ItemsSource="{Binding Source={x:Static local:EnergyType}}" 
-                  SelectedItem="{Binding SelectedEnumValue, Mode=TwoWay}"
-                  DisplayMemberPath="Value" 
-                  SelectedValue="Key" Width="100" Height="20" Margin="5" SelectionChanged="EnergyTypeComboBox_SelectionChanged" HorizontalAlignment="Left">
-            <!-- Add more energy types as needed -->
+        
+        <ComboBox x:Name="EnergyTypeComboBox" ItemsSource="{Binding EnergyTypes}" 
+           SelectedItem="{Binding SelectedEnumValue, Mode=TwoWay}" DisplayMemberPath="Value" SelectedValue="Key"
+           Width="100" Height="20" Margin="5" SelectionChanged="EnergyTypeComboBox_SelectionChanged" HorizontalAlignment="Left">
+            <ComboBox.DataContext>
+                <local:EnergyType/>
+            </ComboBox.DataContext>
         </ComboBox>
 
 
