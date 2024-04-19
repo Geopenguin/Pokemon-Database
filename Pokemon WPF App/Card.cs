@@ -8,13 +8,29 @@ namespace Pokemon_WPF_App
 {
     public class Card
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImagePath { get; set; }
-        public string Type { get; set; } // e.g., Fire, Water, Grass
+        // Card properties 
+        public int CardID { get; set; }
+        public int SetID { get; set; }
+        public int EnergyTypeID { get; set; }
+        public string Rarity { get; set; }
+        public string CardType { get; set; }
         public int HP { get; set; }
-        public int Attack { get; set; }
-        public int Defense { get; set; }
-        // Add any other properties you need for a Pokémon card
+        public string CardName { get; set; }
+        public string? TrainerEffect { get; set; }
+        public string? ImagePath { get; set; }
+
+        //Card Constructor 
+        public Card(int cardId, int setId, int energytypeId,string rarity, string cardtype, int hp, string cardname, string? trainer, string? image)
+        {
+            CardID = cardId;
+            SetID = setId;
+            EnergyTypeID = energytypeId;
+            Rarity = rarity;
+            CardType = cardtype;
+            HP = hp;
+            CardName = cardname;
+            TrainerEffect = trainer;
+            ImagePath = image;
+        }
     }
 }

@@ -30,8 +30,8 @@ namespace Pokemon_WPF_App
             // Create a collection of all available cards
             allCards = new ObservableCollection<Card>
         {
-            new Card { Name = "Pikachu", ImagePath = "/Images/Pikachu.png", /* ... */ },
-            new Card { Name = "Charizard", ImagePath = "/Images/Charizard.png", /* ... */ },
+            //new Card { CardName = "Pikachu", ImagePath = "/Images/Pikachu.png", /* ... */ },
+            //new Card { CardName = "Charizard", ImagePath = "/Images/Charizard.png", /* ... */ },
             // Add more cards as needed
         };
 

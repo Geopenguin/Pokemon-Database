@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,44 +20,27 @@ namespace Pokemon_WPF_App
 {
     public partial class MarketPage : Page
     {
+        /// <summary>
+        /// Market object to use
+        /// </summary>
         private MarketCards market;
 
-        public MarketPage()
+        /// <summary>
+        /// Repo class instantiated 
+        /// </summary>
+        private CardRepository repo;
+
+        public MarketPage(CardRepository cr,MarketCards m)
         {
             InitializeComponent();
-
-            // Create a new Market object
-            market = new MarketCards();
-
-            // Add some sample cards to the market
-            // ...
-            for (int i = 0; i < 30; i++)
+            repo = cr;
+            market = m;
+            foreach (Card card in repo.GetAllCards())
             {
-                market.AddCard(new Card
-                {
-                    Name = "Charizard " + i,
-                    Description = "A Fire/Flying type Pokémon",
-                    ImagePath = "/Images/Charizard.png",
-                    Type = "Fire/Flying",
-                    HP = 78,
-                    Attack = 84,
-                    Defense = 78
-                });
-            }
-            for (int i = 0; i < 30; i++)
-            {
-                market.AddCard(new Card
-                {
-                    Name = "Squirtle" + i,
-                    Description = "A Fire/Flying type Pokémon",
-                    ImagePath = "/Images/Charizard.png",
-                    Type = "Fire/Flying",
-                    HP = 78,
-                    Attack = 84,
-                    Defense = 78
-                });
-            }
 
+                market.AddCard(card); 
+            }
+             
             // Set the data context for the MarketPage
             DataContext = market;
 
@@ -73,8 +58,9 @@ namespace Pokemon_WPF_App
             else
             {
                 // Filter the market cards based on the search term
+                
                 market.FilteredMarketCards = new ObservableCollection<Card>(
-                    market.MC.Where(card => card.Name.ToLower().Contains(searchTerm)));
+                    market.MC.Where(card => card.CardName.ToLower().Contains(searchTerm)));
             }
         }
 
@@ -91,9 +77,9 @@ namespace Pokemon_WPF_App
                 }
                 else
                 {
-                    // Filter the market cards based on the selected energy type
+                    //Filter the market cards based on the selected energy type
                     market.FilteredMarketCards = new ObservableCollection<Card>(
-                        market.MC.Where(card => card.Type.ToLower().Contains(selectedEnergyType.ToLower())));
+                        market.MC.Where(card => card.EnergyTypeID.Equals(selectedEnergyType)));
                 }
             }
         }

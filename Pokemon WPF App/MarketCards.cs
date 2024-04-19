@@ -40,6 +40,7 @@ namespace Pokemon_WPF_App
             FilteredMarketCards = new ObservableCollection<Card>();
         }
 
+
         public void AddCard(Card card)
         {
             MC.Add(card);

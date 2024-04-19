@@ -33,16 +33,12 @@ namespace Pokemon_WPF_App
             // ...
             for (int i = 0; i < 6; i++) 
             {
-                currentUser.AddCard(new Card
-                {
-                    Name = "Charizard " + i,
-                    Description = "A Fire/Flying type Pokémon",
-                    ImagePath = "/Images/Charizard.png",
-                    Type = "Fire/Flying",
-                    HP = 78,
-                    Attack = 84,
-                    Defense = 78
-                });
+                //currentUser.AddCard(new Card
+                //{
+                //    CardName = "Charizard " + i,
+                //    ImagePath = "/Images/Charizard.png",
+                //    HP = 78,
+                //});
             }
             // Set the data context for the UserLibraryPage
             DataContext = currentUser;

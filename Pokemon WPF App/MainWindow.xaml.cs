@@ -25,8 +25,10 @@ namespace Pokemon_WPF_App
             InitializeComponent();
 
             // Create instances of the pages
+            CardRepository repo = new CardRepository();
+            MarketCards market = new MarketCards(); 
             userLibraryPage = new UserLibraryPage();
-            marketPage = new MarketPage();
+            marketPage = new MarketPage(repo,market);
             gamblePage = new GamblePage(user);
 
             // Navigate to the initial page

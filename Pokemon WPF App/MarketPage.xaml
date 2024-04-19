@@ -18,12 +18,11 @@
             <TextBox x:Name="SearchTextBox" Width="200" Margin="5" />
             <Button Content="Search" Click="SearchButton_Click" Margin="5" />
         </StackPanel>
-
-        <ComboBox x:Name="EnergyTypeComboBox" Width="100" Height="20" Margin="5" SelectionChanged="EnergyTypeComboBox_SelectionChanged" HorizontalAlignment="Left">
-            <ComboBoxItem Content="All" />
-            <ComboBoxItem Content="Fire" />
-            <ComboBoxItem Content="Water" />
-            <ComboBoxItem Content="Electric" />
+<!--Need to bind this -->
+        <ComboBox x:Name="EnergyTypeComboBox" ItemsSource="{Binding Source={x:Static local:EnergyType}}" 
+                  SelectedItem="{Binding SelectedEnumValue, Mode=TwoWay}"
+                  DisplayMemberPath="Value" 
+                  SelectedValue="Key" Width="100" Height="20" Margin="5" SelectionChanged="EnergyTypeComboBox_SelectionChanged" HorizontalAlignment="Left">
             <!-- Add more energy types as needed -->
         </ComboBox>
 
@@ -47,15 +46,15 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" />
+                                    <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
 
                                     <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
 
                                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding Type}" FontWeight="Bold" Margin="5,0" />
+                                        <TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />
                                         <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding Attack}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding Defense}" FontWeight="Bold" Margin="5,0" />
+                                        <TextBlock Text="{Binding TrainerEffect}" FontWeight="Bold" Margin="5,0" />
+                                        <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" />
                                     </StackPanel>
                                 </Grid>
                             </Border>
