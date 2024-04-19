@@ -10,8 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Pokemon Solid.ttf" />
+    <None Remove="Images\pokemon-login-grid-background-3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Pokemon Solid.ttf" />
+    <Resource Include="Images\pokemon-login-grid-background-3.jpg" />
   </ItemGroup>
 
 </Project>

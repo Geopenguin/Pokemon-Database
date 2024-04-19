@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Pokemon_WPF_App.Card">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAACAAAAAAAAAAAAAAIAAQAgAQAAAAAAAAAgAIAQ=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pokemon_WPF_App.CardRepository">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAYAAAAAAAAAA=</HashCode>
+      <FileName>CardRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pokemon_WPF_App.GamblePage">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAABAAAAAAAiAAAAAAEAEQAAAAEAAAAAAAAEAAAA=</HashCode>
+      <FileName>GamblePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pokemon_WPF_App.MainWindow">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAACAAAAAIBAAAAAAAAAAAAAAAAAQAAAAQA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pokemon_WPF_App.MarketCards">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Pokemon_WPF_App.MarketCards.EnumValue" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MarketCards.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAAAIAAAAAIAAgCEIAAAAAAAgAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>MarketCards.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pokemon_WPF_App.MarketPage">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAgABAAEAAAAAAAAAAAAAAAAAgAQAAAA=</HashCode>
+      <FileName>MarketPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pokemon_WPF_App.User">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAQAAAAAAAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pokemon_WPF_App.UserLibraryPage">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Pokemon_WPF_App.UserLibraryPage.RelayCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserLibraryPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAyAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserLibraryPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="Pokemon_WPF_App.EnergyType">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAgAAAAAAQAACAAAAAAAAEAgAQAAQAAAAAA=</HashCode>
+      <FileName>EnergyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
