@@ -10,6 +10,8 @@ namespace Pokemon_WPF_App
     public class User
     {
         public string Name { get; set; }
+
+
         public ObservableCollection<Card> Cards { get; set; }
         public User(string name)
         {

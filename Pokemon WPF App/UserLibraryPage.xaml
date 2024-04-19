@@ -33,6 +33,7 @@
                                     <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
 
                                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding CardName}" FontWeight="Bold" Margin="5,0"/>
                                         <TextBlock Text="{Binding Type}" FontWeight="Bold" Margin="5,0" />
                                         <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
                                         <TextBlock Text="{Binding Attack}" FontWeight="Bold" Margin="5,0" />

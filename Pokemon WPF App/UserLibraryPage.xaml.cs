@@ -1,7 +1,9 @@
 ﻿using Pokemon_WPF_App;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Pokemon_WPF_App
 {
@@ -22,25 +25,25 @@ namespace Pokemon_WPF_App
         private User currentUser;
         private ICommand removeCardCommand;
 
-        public UserLibraryPage()
+        private CardRepository repo;
+
+        public UserLibraryPage(CardRepository cr)
         {
             InitializeComponent();
 
             // Create a new User object
             currentUser = new User("John Doe");
+            repo = cr;
+            foreach (Card card in repo.GetUserCards())
+            {
 
-            // Add some sample cards
-            // ...
-            //for (int i = 0; i < 6; i++) 
-            //{
-            //    currentUser.AddCard(new Card
-            //    {
-            //        CardName = "Charizard " + i,
-            //        ImagePath = "/Images/Charizard.png",
-            //        HP = 78,
-            //    });
-            //}
-            // Set the data context for the UserLibraryPage
+                currentUser.AddCard(card);
+            }
+
+            // Set the data context for the MarketPage
+            DataContext = repo;
+
+
             DataContext = currentUser;
 
             // Create the remove card command
@@ -85,6 +88,14 @@ namespace Pokemon_WPF_App
             }
 
             public event EventHandler CanExecuteChanged;
+
+            //// Implement INotifyPropertyChanged interface
+            //public event PropertyChangedEventHandler PropertyChanged;
+
+            //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+            //{
+            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            //}
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -18,7 +19,7 @@ using System.Windows.Shapes;
 
 namespace Pokemon_WPF_App
 {
-    public partial class GamblePage : Page
+    public partial class GamblePage : Page, INotifyPropertyChanged
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
         private ObservableCollection<Card> allCards;
@@ -119,7 +120,7 @@ namespace Pokemon_WPF_App
         private void InsertCardForUser(Card card, int userId)
         {
             // SQL query to insert the card into the User.UserCards table
-            string query = "INSERT INTO [User].[UserCards] (UserId, CardId) VALUES (@UserId, @CardId)";
+            string query = "INSERT INTO [User].[UserCards] (UserId, CardId, Quantity) VALUES (@UserId, @CardId, 1)";
 
             // Create a connection to the database
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -136,6 +137,7 @@ namespace Pokemon_WPF_App
 
                 // Execute the query
                 command.ExecuteNonQuery();
+                OnPropertyChanged(); 
             }
         }
 
@@ -146,5 +148,6 @@ namespace Pokemon_WPF_App
             // For this example, let's assume the logged-in user's ID is 1
             return 1;
         }
+
     }
 }
