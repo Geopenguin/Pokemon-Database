@@ -22,9 +22,7 @@
         <ComboBox x:Name="EnergyTypeComboBox" ItemsSource="{Binding EnergyTypes}" 
            SelectedItem="{Binding SelectedEnumValue, Mode=TwoWay}" DisplayMemberPath="Value" SelectedValue="Key"
            Width="100" Height="20" Margin="5" SelectionChanged="EnergyTypeComboBox_SelectionChanged" HorizontalAlignment="Left">
-            <ComboBox.DataContext>
-                <local:EnergyType/>
-            </ComboBox.DataContext>
+           
         </ComboBox>
 
 
