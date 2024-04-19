@@ -1,0 +1,80 @@
+﻿<Window x:Class="Pokemon_WPF_App.LoginWindow"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:local="clr-namespace:Pokemon_WPF_App"
+     mc:Ignorable="d"
+     Title="Login" Height="600" Width="1000"
+     WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="PokemonFont" TargetType="TextBlock">
+            <!-- <Setter Property="FontFamily" Value="C:\Users\Logan\Downloads\Pokemon Solid.ttf#Pokemon Solid"/> -->
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Pokemon Solid"/>
+            <Setter Property="Foreground" Value="#FFCB05"/>
+            <Setter Property="FontSize" Value="60"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/pokemon-login-grid-background-3.jpg"
+                    Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="20">
+            <TextBlock Text="PokemonDB" Style="{StaticResource PokemonFont}"/>
+
+            <TextBlock Text="Login" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,30"
+                   FontFamily="Comic Sans MS" Foreground="White"/>
+
+            <StackPanel HorizontalAlignment="Center">
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Username:" VerticalAlignment="Center" Margin="0,0,10,0"
+                           FontSize="18" FontFamily="Comic Sans MS" Foreground="White"/>
+                    <TextBox x:Name="txtUsername" Grid.Column="1" VerticalAlignment="Center"
+                         FontSize="16" FontFamily="Comic Sans MS" Width="300"/>
+                </Grid>
+
+                <Grid Margin="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Password:" VerticalAlignment="Center" Margin="0,0,10,0"
+                           FontSize="18" FontFamily="Comic Sans MS" Foreground="White"/>
+                    <PasswordBox x:Name="txtPassword" Grid.Column="1" VerticalAlignment="Center"
+                             FontSize="16" FontFamily="Comic Sans MS" Width="300"/>
+                </Grid>
+            </StackPanel>
+
+            <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Center"
+                Padding="30,10" FontSize="18" FontFamily="Comic Sans MS"
+                Margin="0,0,0,20" Click="btnLogin_Click"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Don't have an account?" VerticalAlignment="Center"
+                       FontSize="14" FontFamily="Comic Sans MS" Foreground="White"/>
+                <Button x:Name="btnSignup" Content="Sign Up" 
+                    Padding="10,5" Margin="10,0,0,0" FontSize="14"
+                    FontFamily="Comic Sans MS" Click="btnSignup_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
