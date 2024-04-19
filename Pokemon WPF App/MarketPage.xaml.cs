@@ -30,6 +30,11 @@ namespace Pokemon_WPF_App
         /// </summary>
         private CardRepository repo;
 
+        public List<EnergyType> EnergyTypes { get; set; }
+
+        public EnergyType SelectedEnumValue { get; set; }
+
+       
         public MarketPage(CardRepository cr,MarketCards m)
         {
             InitializeComponent();
@@ -66,24 +71,21 @@ namespace Pokemon_WPF_App
 
         private void EnergyTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EnergyTypeComboBox.SelectedItem != null)
-            {
-                string selectedEnergyType = ((ComboBoxItem)EnergyTypeComboBox.SelectedItem).Content.ToString();
+            var comboBox = (ComboBox)sender;
+            var selectedEnergyType = (EnergyType)comboBox.SelectedValue;
 
-                if (selectedEnergyType == "All")
-                {
-                    // Show all cards
-                    market.FilteredMarketCards = new ObservableCollection<Card>(market.MC);
-                }
-                else
-                {
-                    //Filter the market cards based on the selected energy type
-                    market.FilteredMarketCards = new ObservableCollection<Card>(
-                        market.MC.Where(card => card.EnergyTypeID.Equals(selectedEnergyType)));
-                }
+            if (selectedEnergyType != EnergyType.NONE)
+            {
+                // Filter the market cards based on the selected energy type
+                market.FilteredMarketCards = new ObservableCollection<Card>(
+                    market.MC.Where(card => card.EnergyTypeID == (int)selectedEnergyType));
+            }
+            else
+            {
+                // Show all cards
+                market.FilteredMarketCards = new ObservableCollection<Card>(market.MC);
             }
         }
-
 
     }
 }

@@ -18,13 +18,15 @@
             <TextBox x:Name="SearchTextBox" Width="200" Margin="5" />
             <Button Content="Search" Click="SearchButton_Click" Margin="5" />
         </StackPanel>
-        
-        <ComboBox x:Name="EnergyTypeComboBox" ItemsSource="{Binding EnergyTypes}" 
-           SelectedItem="{Binding SelectedEnumValue, Mode=TwoWay}" DisplayMemberPath="Value" SelectedValue="Key"
-           Width="100" Height="20" Margin="5" SelectionChanged="EnergyTypeComboBox_SelectionChanged" HorizontalAlignment="Left">
-           
-        </ComboBox>
 
+        <ComboBox x:Name="EnergyTypeComboBox"
+          ItemsSource="{Binding EnergyTypes}"
+          SelectedItem="{Binding SelectedEnumValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+          DisplayMemberPath="Key"
+          SelectedValuePath="Value"
+          Width="100" Height="20" Margin="5"
+          SelectionChanged="EnergyTypeComboBox_SelectionChanged"
+          HorizontalAlignment="Left" />
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="CardItemsControl" ItemsSource="{Binding FilteredMarketCards}">

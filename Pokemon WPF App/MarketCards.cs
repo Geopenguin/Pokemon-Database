@@ -34,13 +34,28 @@ namespace Pokemon_WPF_App
             }
         }
 
+        public List<EnumValue> EnergyTypes { get; set; }
+
+        public EnergyType SelectedEnumValue { get; set; }
+
         public MarketCards()
         {
+            EnergyTypes = Enum.GetValues(typeof(EnergyType))
+                              .Cast<EnergyType>()
+                              .Select(v => new EnumValue { Value = v, Key = v.ToString() })
+                              .ToList();
+
+            // Set the default selection to "ALL"
+            SelectedEnumValue = EnergyType.NONE;
             MC = new ObservableCollection<Card>();
             FilteredMarketCards = new ObservableCollection<Card>();
         }
 
-
+        public class EnumValue
+        {
+            public EnergyType Value { get; set; }
+            public string Key { get; set; }
+        }
         public void AddCard(Card card)
         {
             MC.Add(card);
