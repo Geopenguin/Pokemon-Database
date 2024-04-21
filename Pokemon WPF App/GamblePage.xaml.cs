@@ -142,10 +142,7 @@ namespace Pokemon_WPF_App
 
         private int GetLoggedInUserId()
         {
-            // Implement the logic to get the currently logged-in user's ID
-            // This could involve retrieving the user object from a session or other storage mechanism
-            // For this example, let's assume the logged-in user's ID is 1
-            return 1;
+            return currentUser.UserId;
         }
 
     }
