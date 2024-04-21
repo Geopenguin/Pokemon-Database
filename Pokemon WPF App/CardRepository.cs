@@ -80,53 +80,41 @@ namespace Pokemon_WPF_App
         /// Method to return all cards from the Cards.Cards table 
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<Card> GetUserCards()
+        public ObservableCollection<Card> GetUserCards(int userId)
         {
             ObservableCollection<Card> cardsList = new ObservableCollection<Card>();
+            string query = "SELECT c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HP, c.CardName, c.TrainerEffect, c.ImagePath " +
+                           "FROM [User].UserCards uc JOIN Cards.Cards c ON uc.CardID = c.CardID " +
+                           "WHERE uc.UserID = @UserId";
 
-            // SQL query to select all cards from the database
-            string query = "SELECT c.CardID, c.SetID, c.EnergyTypeID,c.Rarity,c.CardType, c.HitPoints, c.CardName, c.TrainerEffect, c.ImageUrl" +
-                " FROM [User].UserCards uc JOIN Cards.Cards c ON uc.CardID = c.CardID";
-
-            // Create a connection to the database
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Open the connection
                 connection.Open();
-
-                // Create a command object with the query and connection
-                SqlCommand command = new SqlCommand(query, connection);
-
-                // Execute the query and get the result set
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Iterate through the result set
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-
-                    // Create a new card object
-                    Card card = new Card(
-
-                        reader.GetInt32(0), //card id
-                        reader.GetInt32(1), //card setid
-                        reader.GetInt32(2), //card energy type id
-                        reader.GetString(3), //card rarity
-                        reader.GetString(4), //cardtype 
-                        reader.GetInt32(5), //hitpoints
-                        reader.GetString(6), //CardName
-                        reader.GetString(7), //trainer effect, nullable
-                        reader.GetString(8) //image url
-                    );
-
-                    // Add the card object to the list
-                    cardsList.Add(card);
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Card card = new Card(
+                                reader.GetInt32(0), // card id
+                                reader.GetInt32(1), // card setid
+                                reader.GetInt32(2), // card energy type id
+                                reader.GetString(3), // card rarity
+                                reader.GetString(4), // cardtype
+                                reader.GetInt32(5), // hitpoints
+                                reader.GetString(6), // CardName
+                                reader.GetString(7), // trainer effect, nullable
+                                reader.GetString(8) // image url
+                            );
+                            cardsList.Add(card);
+                        }
+                    }
                 }
-
-                // Close the reader
-                reader.Close();
             }
-            cards = cardsList;
-            return cards;
+
+            return cardsList;
         }
 
     }

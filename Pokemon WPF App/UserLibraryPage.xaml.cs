@@ -19,34 +19,24 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Pokemon_WPF_App
 {
-
     public partial class UserLibraryPage : Page
     {
         private User currentUser;
         private ICommand removeCardCommand;
-
         private CardRepository repo;
 
-        public UserLibraryPage(CardRepository cr)
+        public UserLibraryPage(CardRepository cr, User user)
         {
             InitializeComponent();
-
-            // Create a new User object
-            currentUser = new User("John Doe");
+            currentUser = user;
             repo = cr;
-            foreach (Card card in repo.GetUserCards())
-            {
 
-                currentUser.AddCard(card);
+            foreach (Card card in repo.GetUserCards(currentUser.UserId))
+            {
+                currentUser.Cards.Add(card);
             }
 
-            // Set the data context for the MarketPage
-            DataContext = repo;
-
-
             DataContext = currentUser;
-
-            // Create the remove card command
             removeCardCommand = new RelayCommand(RemoveCard);
         }
 
@@ -59,7 +49,6 @@ namespace Pokemon_WPF_App
         {
             // Get the card to remove
             Card cardToRemove = parameter as Card;
-
             if (cardToRemove != null)
             {
                 // Remove the card from the user's collection
@@ -88,19 +77,6 @@ namespace Pokemon_WPF_App
             }
 
             public event EventHandler CanExecuteChanged;
-
-            //// Implement INotifyPropertyChanged interface
-            //public event PropertyChangedEventHandler PropertyChanged;
-
-            //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-            //{
-            //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            //}
         }
     }
 }
-
-
-
-
-

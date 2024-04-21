@@ -9,7 +9,6 @@
      WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="PokemonFont" TargetType="TextBlock">
-            <!-- <Setter Property="FontFamily" Value="C:\Users\Logan\Downloads\Pokemon Solid.ttf#Pokemon Solid"/> -->
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Pokemon Solid"/>
             <Setter Property="Foreground" Value="#FFCB05"/>
             <Setter Property="FontSize" Value="60"/>

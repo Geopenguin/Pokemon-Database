@@ -15,42 +15,41 @@ using System.Windows.Shapes;
 namespace Pokemon_WPF_App
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for SignupWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class SignupWindow : Window
     {
-        public LoginWindow()
+        public SignupWindow()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void btnSignup_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
+            string email = txtEmail.Text;
             string password = txtPassword.Password;
 
-            // Validate the username and password against our database
-            // If successful, navigate to the main window
             UserRepository userRepository = new UserRepository();
-            User user = userRepository.AuthenticateUser(username, password);
+            bool isRegistered = userRepository.RegisterUser(username, email, password);
 
-            if (user != null)
+            if (isRegistered)
             {
-                MainWindow mainWindow = new MainWindow(user);
-                mainWindow.Show();
+                MessageBox.Show("Registration successful. You can now log in.");
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Invalid username or password. Please try again.");
+                MessageBox.Show("Registration failed. Please try again.");
             }
         }
 
-        private void btnSignup_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            // Implement signup logic here
-            SignupWindow signupWindow = new SignupWindow();
-            signupWindow.Show();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
             this.Close();
         }
     }

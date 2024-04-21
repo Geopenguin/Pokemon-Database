@@ -9,15 +9,23 @@ namespace Pokemon_WPF_App
 {
     public class User
     {
-        public string Name { get; set; }
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
+        public string Email { get; set; }
 
+        
         public ObservableCollection<Card> Cards { get; set; }
-        public User(string name)
+
+        public User(int userId, string username, string email)
         {
-            Name = name;
+            UserId = userId;
+            Username = username;
+            Email = email;
             Cards = new ObservableCollection<Card>();
         }
+
         public void RemoveCard(Card card)
         {
             Cards.Remove(card);
