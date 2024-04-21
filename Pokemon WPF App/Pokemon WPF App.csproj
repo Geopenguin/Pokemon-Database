@@ -13,6 +13,11 @@
     <None Remove="Fonts\Pokemon Solid.ttf" />
     <None Remove="Images\pokemon-login-grid-background-3.jpg" />
     <None Remove="Images\pokemon-signup-grid-background.jpg" />
+    <None Remove="UML.cd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="UML.cd" />
   </ItemGroup>
 
   <ItemGroup>
