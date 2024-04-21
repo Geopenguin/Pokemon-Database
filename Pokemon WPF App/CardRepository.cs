@@ -83,7 +83,7 @@ namespace Pokemon_WPF_App
         public ObservableCollection<Card> GetUserCards(int userId)
         {
             ObservableCollection<Card> cardsList = new ObservableCollection<Card>();
-            string query = "SELECT c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HP, c.CardName, c.TrainerEffect, c.ImagePath " +
+            string query = "SELECT c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HitPoints, c.CardName, c.TrainerEffect, c.ImageURL " +
                            "FROM [User].UserCards uc JOIN Cards.Cards c ON uc.CardID = c.CardID " +
                            "WHERE uc.UserID = @UserId";
 

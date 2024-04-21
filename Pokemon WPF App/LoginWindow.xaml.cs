@@ -32,7 +32,7 @@ namespace Pokemon_WPF_App
             // Validate the username and password against our database
             // If successful, navigate to the main window
             UserRepository userRepository = new UserRepository();
-            User user = userRepository.AuthenticateUser(username, password);
+            User user = userRepository.AuthenticateUser(username, password);    //Logical error 
 
             if (user != null)
             {

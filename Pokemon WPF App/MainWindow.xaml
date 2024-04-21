@@ -20,6 +20,14 @@
             <TabItem Header="Test Connection">
                 <Button x:Name="TestConnection" Content="Test Connection" Click="TestConnectionButton_Click"></Button>
             </TabItem>
+            <TabItem Header="Admin Page">
+                <WrapPanel>
+                    <Button x:Name="Aggregation1" Content="AG1"></Button>
+                    <Button x:Name="Aggregation2" Content="AG2"></Button>
+                    <Button x:Name="Aggregation3" Content="AG3"></Button>
+                    <Button x:Name="Aggregation4" Content="AG4"></Button>
+                </WrapPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
