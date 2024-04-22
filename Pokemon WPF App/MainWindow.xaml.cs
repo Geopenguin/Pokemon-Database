@@ -46,6 +46,7 @@ namespace Pokemon_WPF_App
                 switch (selectedTab.Header.ToString())
                 {
                     case "User Library":
+                        userLibraryPage.RefreshLib(); 
                         LibraryFrame.NavigationService.Navigate(userLibraryPage);
                         break;
                     case "Market":

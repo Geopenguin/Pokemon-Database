@@ -18,6 +18,7 @@ namespace Pokemon_WPF_App
         public string CardName { get; set; }
         public string? TrainerEffect { get; set; }
         public string? ImagePath { get; set; }
+        public int UserCardId { get; set; }
 
         //Card Constructor 
         public Card(int cardId, int setId, int energytypeId,string rarity, string cardtype, int hp, string cardname, string? trainer, string? image)
