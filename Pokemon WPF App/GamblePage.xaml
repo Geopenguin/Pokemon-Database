@@ -9,6 +9,10 @@
       Title="GamblePage">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/pokemon-gambling.jpg"
+            Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -35,7 +39,7 @@
 
                                 <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
 
-                                <Image Grid.Row="1" Source="{Binding ImageUrl}" Stretch="UniformToFill" />
+                                <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                     <TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />

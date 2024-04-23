@@ -9,6 +9,10 @@
       Title="UserLibraryPage">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/pokemon-user-library-background.jpg"
+            Stretch="UniformToFill"/>
+        </Grid.Background>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="CardItemsControl" ItemsSource="{Binding Cards}">
                 <ItemsControl.ItemsPanel>

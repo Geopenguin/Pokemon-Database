@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pokemon_WPF_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Name="Main">
+        Title="MainWindow" Height="450" Width="800" Name="Main"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
             <TabItem Header="User Library">

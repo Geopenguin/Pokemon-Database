@@ -3,11 +3,13 @@
      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
      xmlns:local="clr-namespace:Pokemon_WPF_App"
      mc:Ignorable="d"
      Title="Login" Height="600" Width="1000"
      WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <!-- Pokemon Font -->
         <Style x:Key="PokemonFont" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Pokemon Solid"/>
             <Setter Property="Foreground" Value="#FFCB05"/>
@@ -15,9 +17,26 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,20,0,10"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="6" Opacity="0.7" BlurRadius="4"/>
+                </Setter.Value>
+            </Setter>
         </Style>
+        
+        <!-- White Text Font Style (for visibility) -->
+        <Style x:Key="ShadowedText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="4" Opacity="0.7" BlurRadius="4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
+    
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/pokemon-login-grid-background-3.jpg"
@@ -35,7 +54,7 @@
 
             <TextBlock Text="Login" FontSize="24" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="0,0,0,30"
-                   FontFamily="Comic Sans MS" Foreground="White"/>
+                   FontFamily="Segoe UI" Foreground="White" Style="{StaticResource ShadowedText}"/>
 
             <StackPanel HorizontalAlignment="Center">
                 <Grid Margin="0,0,0,20">
@@ -45,9 +64,9 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="Username:" VerticalAlignment="Center" Margin="0,0,10,0"
-                           FontSize="18" FontFamily="Comic Sans MS" Foreground="White"/>
+                           FontSize="18" FontFamily="Segoe UI" Foreground="White" Style="{StaticResource ShadowedText}"/>
                     <TextBox x:Name="txtUsername" Grid.Column="1" VerticalAlignment="Center"
-                         FontSize="16" FontFamily="Comic Sans MS" Width="300"/>
+                         FontSize="16" FontFamily="Segoe UI" Width="300"/>
                 </Grid>
 
                 <Grid Margin="0,0,0,30">
@@ -57,22 +76,22 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="Password:" VerticalAlignment="Center" Margin="0,0,10,0"
-                           FontSize="18" FontFamily="Comic Sans MS" Foreground="White"/>
+                           FontSize="18" FontFamily="Segoe UI" Foreground="White" Style="{StaticResource ShadowedText}"/>
                     <PasswordBox x:Name="txtPassword" Grid.Column="1" VerticalAlignment="Center"
-                             FontSize="16" FontFamily="Comic Sans MS" Width="300"/>
+                             FontSize="16" FontFamily="Segoe UI" Width="300"/>
                 </Grid>
             </StackPanel>
 
             <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Center"
-                Padding="30,10" FontSize="18" FontFamily="Comic Sans MS"
+                Padding="30,10" FontSize="18" FontFamily="Segoe UI"
                 Margin="0,0,0,20" Click="btnLogin_Click"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Don't have an account?" VerticalAlignment="Center"
-                       FontSize="14" FontFamily="Comic Sans MS" Foreground="White"/>
+                       FontSize="14" FontFamily="Segoe UI" Foreground="White" Style="{StaticResource ShadowedText}"/>
                 <Button x:Name="btnSignup" Content="Sign Up" 
                     Padding="10,5" Margin="10,0,0,0" FontSize="14"
-                    FontFamily="Comic Sans MS" Click="btnSignup_Click"/>
+                    FontFamily="Segoe UI" Click="btnSignup_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

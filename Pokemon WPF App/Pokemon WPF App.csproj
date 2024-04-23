@@ -11,19 +11,32 @@
 
   <ItemGroup>
     <None Remove="Fonts\Pokemon Solid.ttf" />
+    <None Remove="Images\pokemon-gambling.jpg" />
     <None Remove="Images\pokemon-login-grid-background-3.jpg" />
     <None Remove="Images\pokemon-signup-grid-background.jpg" />
+    <None Remove="Images\pokemon-user-library-background.jpg" />
+    <None Remove="Sounds\login-button-sound.wav" />
+    <None Remove="Sounds\sign-up-button-sound.wav" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Fonts\Pokemon Solid.ttf" />
+    <Resource Include="Images\pokemon-gambling.jpg" />
     <Resource Include="Images\pokemon-login-grid-background-3.jpg" />
     <Resource Include="Images\pokemon-signup-grid-background.jpg" />
+    <Resource Include="Images\pokemon-user-library-background.jpg" />
+    <Content Include="Sounds\login-button-sound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\sign-up-button-sound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

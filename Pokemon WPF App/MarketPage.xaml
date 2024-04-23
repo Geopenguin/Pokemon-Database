@@ -9,6 +9,10 @@
       Title="MarketPage">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/pokemon-login-grid-background-3.jpg"
+            Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -37,7 +41,6 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ListBox SelectionMode="Single">
                             <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="5" Margin="5">
                                 <Grid Width="200" Height="300">
                                     <Grid.RowDefinitions>
@@ -59,7 +62,6 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                        </ListBox>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
