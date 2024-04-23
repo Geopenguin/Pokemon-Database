@@ -29,7 +29,7 @@ namespace Pokemon_WPF_App
             CardRepository repo = new CardRepository();
             MarketCards market = new MarketCards();
             userLibraryPage = new UserLibraryPage(repo, user);
-            marketPage = new MarketPage(repo, market);
+            marketPage = new MarketPage(repo, market,user);
             gamblePage = new GamblePage(user);
 
             // Navigate to the initial page
@@ -46,6 +46,7 @@ namespace Pokemon_WPF_App
                 switch (selectedTab.Header.ToString())
                 {
                     case "User Library":
+                        userLibraryPage.RefreshLib(); 
                         LibraryFrame.NavigationService.Navigate(userLibraryPage);
                         break;
                     case "Market":

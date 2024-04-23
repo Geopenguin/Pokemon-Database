@@ -39,7 +39,11 @@
 
                                 <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
 
+<<<<<<< HEAD
                                 <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
+=======
+                                <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />
+>>>>>>> f003b26d4f61054ec645fd905f36150835c0ca7a
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                     <TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />

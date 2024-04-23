@@ -32,12 +32,7 @@ namespace Pokemon_WPF_App
             currentUser = user;
 
             // Create a collection of all available cards
-            allCards = new ObservableCollection<Card>
-        {
-            //new Card { CardName = "Pikachu", ImagePath = "/Images/Pikachu.png", /* ... */ },
-            //new Card { CardName = "Charizard", ImagePath = "/Images/Charizard.png", /* ... */ },
-            // Add more cards as needed
-        };
+            allCards = new ObservableCollection<Card>{};
 
             // Initialize the gambling cards collection
             gamblingCards = new ObservableCollection<Card>();
@@ -77,10 +72,6 @@ namespace Pokemon_WPF_App
             }
         }
 
-        private void ChooseCardButtonClickChooseCardButton_Click() 
-        {
-
-        }
 
         private void ClaimButton_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +87,7 @@ namespace Pokemon_WPF_App
             // Insert the claimed card into the User.UserCards table
             InsertCardForUser(claimedCard, loggedInUserId);
         }
+
 
         private Card GetCardFromButton(Button button)
         {
@@ -116,6 +108,7 @@ namespace Pokemon_WPF_App
             // If the parent Border is found, get the Card object from its DataContext
             return cardBorder?.DataContext as Card;
         }
+
 
         private void InsertCardForUser(Card card, int userId)
         {
@@ -142,10 +135,7 @@ namespace Pokemon_WPF_App
 
         private int GetLoggedInUserId()
         {
-            // Implement the logic to get the currently logged-in user's ID
-            // This could involve retrieving the user object from a session or other storage mechanism
-            // For this example, let's assume the logged-in user's ID is 1
-            return 1;
+            return currentUser.UserId;
         }
 
     }

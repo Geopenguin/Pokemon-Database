@@ -40,6 +40,23 @@ namespace Pokemon_WPF_App
             removeCardCommand = new RelayCommand(RemoveCard);
         }
 
+        public void RefreshLib()
+        {
+            ClearLib();
+            foreach (Card card in repo.GetUserCards(currentUser.UserId))
+            {
+                currentUser.Cards.Add(card);
+            }
+        }
+
+        public void ClearLib()
+        {
+            foreach (Card card in repo.GetUserCards(currentUser.UserId))
+            {
+                currentUser.Cards.Clear();
+            }
+        }
+
         public ICommand RemoveCardCommand
         {
             get { return removeCardCommand; }
@@ -77,6 +94,31 @@ namespace Pokemon_WPF_App
             }
 
             public event EventHandler CanExecuteChanged;
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the Button that was clicked
+            Button button = sender as Button;
+
+            // Find the parent ListBox
+            DependencyObject parent = button;
+            while (parent != null && !(parent is ListBox))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            ListBox listBox = parent as ListBox;
+
+            // Get the Card object from the ListBox's DataContext
+            Card cardToRemove = listBox?.DataContext as Card;
+
+            // Remove the Card object from the Cards collection
+            if (cardToRemove != null)
+            {
+                repo.RemoveCardFromUser(cardToRemove.UserCardId);
+            }
+            RefreshLib(); 
         }
     }
 }

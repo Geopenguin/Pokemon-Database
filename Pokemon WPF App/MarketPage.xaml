@@ -52,13 +52,13 @@
 
                                     <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
 
-                                    <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
-
+                                    <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />
                                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding TrainerEffect}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" />
+                                        <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" TextAlignment="Left" />
+                                        <!-- Wishlist button -->
+                                        <Border CornerRadius="5" Margin="5,0">
+                                            <Button x:Name="WishlistButton" Click="WishlistButton_Click" Content="Add to Wishlist!" Foreground="Black" Padding="1" BorderThickness="2"/>
+                                        </Border>
                                     </StackPanel>
                                 </Grid>
                             </Border>

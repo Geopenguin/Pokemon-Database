@@ -75,6 +75,23 @@ namespace Pokemon_WPF_App
             return cards;
         }
 
+        public void RemoveCardFromUser(int userCardId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM [User].[UserCards] WHERE UserCardId = @UserCardId";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserCardId", userCardId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         /// <summary>
         /// Method to return all cards from the Cards.Cards table 
@@ -83,7 +100,11 @@ namespace Pokemon_WPF_App
         public ObservableCollection<Card> GetUserCards(int userId)
         {
             ObservableCollection<Card> cardsList = new ObservableCollection<Card>();
+<<<<<<< HEAD
             string query = "SELECT c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HitPoints, c.CardName, c.TrainerEffect, c.ImageUrl " +
+=======
+            string query = "SELECT uc.UserCardId, c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HitPoints, c.CardName, c.TrainerEffect, c.ImageURL " +
+>>>>>>> f003b26d4f61054ec645fd905f36150835c0ca7a
                            "FROM [User].UserCards uc JOIN Cards.Cards c ON uc.CardID = c.CardID " +
                            "WHERE uc.UserID = @UserId";
 
@@ -97,17 +118,19 @@ namespace Pokemon_WPF_App
                     {
                         while (reader.Read())
                         {
+                            int userCardId = reader.GetInt32(0); // Get the UserCardId first
                             Card card = new Card(
-                                reader.GetInt32(0), // card id
-                                reader.GetInt32(1), // card setid
-                                reader.GetInt32(2), // card energy type id
-                                reader.GetString(3), // card rarity
-                                reader.GetString(4), // cardtype
-                                reader.GetInt32(5), // hitpoints
-                                reader.GetString(6), // CardName
-                                reader.GetString(7), // trainer effect, nullable
-                                reader.GetString(8) // image url
+                                reader.GetInt32(1), // card id
+                                reader.GetInt32(2), // card setid
+                                reader.GetInt32(3), // card energy type id
+                                reader.GetString(4), // card rarity
+                                reader.GetString(5), // cardtype
+                                reader.GetInt32(6), // hitpoints
+                                reader.GetString(7), // CardName
+                                reader.GetString(8), // trainer effect, nullable
+                                reader.GetString(9) // image url
                             );
+                            card.UserCardId = userCardId; // Set the UserCardId property
                             cardsList.Add(card);
                         }
                     }

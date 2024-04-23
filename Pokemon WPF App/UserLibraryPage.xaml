@@ -44,7 +44,7 @@
                                         <TextBlock Text="{Binding Defense}" FontWeight="Bold" Margin="5,0" />
                                     </StackPanel>
 
-                                    <Button Grid.Row="3" Content="Remove" Command="{Binding RemoveCardCommand}" CommandParameter="{Binding}" />
+                                    <Button Grid.Row="3" Content="Remove" Command="{Binding RemoveCardCommand}" CommandParameter="{Binding}" Click="RemoveButton_Click"/>
                                 </Grid>
                             </Border>
                         </ListBox>
