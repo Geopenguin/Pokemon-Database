@@ -24,8 +24,7 @@ namespace Pokemon_WPF_App
         private string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
         private ObservableCollection<Card> allCards;
         private ObservableCollection<Card> gamblingCards;
-        private User currentUser;
-
+        private User currentUser; 
         public GamblePage(User user)
         {
             InitializeComponent();
@@ -39,6 +38,7 @@ namespace Pokemon_WPF_App
 
             //// Bind the gambling cards collection to the UI
             //GamblingCardsListBox.ItemsSource = gamblingCards;
+
         }
 
         private void GambleButton_Click(object sender, RoutedEventArgs e)
@@ -86,6 +86,33 @@ namespace Pokemon_WPF_App
 
             // Insert the claimed card into the User.UserCards table
             InsertCardForUser(claimedCard, loggedInUserId);
+
+            ///We want to also call a method that inserts user and card info into the GachaTable here
+            /// Pedro Code 
+            AddToGachaHistory(loggedInUserId, claimedCard.CardID); 
+        }
+
+        /// <summary>
+        /// Pedro Code
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="cardId"></param>
+        public void AddToGachaHistory(int userId, int cardId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO [User].Gacha (UserID, CardID, PullTimeStamp) VALUES (@UserId, @CardId, GETDATE())";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@CardId", cardId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
 

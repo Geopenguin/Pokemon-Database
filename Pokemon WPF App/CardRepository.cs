@@ -138,5 +138,47 @@ namespace Pokemon_WPF_App
             return cardsList;
         }
 
+        /// <summary>
+        /// Method to return all cards from the Cards.Cards table 
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<Card> GetUserWishListedCards(int userId)
+        {
+            ObservableCollection<Card> wishList = new ObservableCollection<Card>();
+
+            string query = "SELECT c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HitPoints, c.CardName, c.TrainerEffect, c.ImageURL " +
+               "FROM [Cards].[Cards] c JOIN [User].[WishList] w ON c.CardID = w.CardID " +
+               "WHERE w.UserID = @UserId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Card card = new Card(
+                                reader.GetInt32(0), // card id
+                                reader.GetInt32(1), // card setid
+                                reader.GetInt32(2), // card energy type id
+                                reader.GetString(3), // card rarity
+                                reader.GetString(4), // cardtype
+                                reader.GetInt32(5), // hitpoints
+                                reader.GetString(6), // CardName
+                                reader.GetString(7), // trainer effect, nullable
+                                reader.GetString(8) // image url
+                            );
+                            wishList.Add(card);
+                        }
+                    }
+                }
+            }
+
+            return wishList;
+        }
+
     }
 }

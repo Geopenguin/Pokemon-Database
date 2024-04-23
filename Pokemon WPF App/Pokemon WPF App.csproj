@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="Fonts\Pokemon Solid.ttf" />
+    <None Remove="Images\cards.jpg" />
     <None Remove="Images\pokemon-gambling.jpg" />
     <None Remove="Images\pokemon-login-grid-background-3.jpg" />
     <None Remove="Images\pokemon-signup-grid-background.jpg" />
@@ -31,6 +32,7 @@
     <Resource Include="Images\pokemon-login-grid-background-3.jpg" />
     <Resource Include="Images\pokemon-signup-grid-background.jpg" />
     <Resource Include="Images\pokemon-user-library-background.jpg" />
+    <Resource Include="Images\cards.jpg" />
     <Content Include="Sounds\login-button-sound.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

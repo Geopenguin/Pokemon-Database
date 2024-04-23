@@ -31,9 +31,6 @@ namespace Pokemon_WPF_App
         /// </summary>
         private CardRepository repo;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public List<EnergyType> EnergyTypes { get; set; }
 
 
@@ -43,19 +40,22 @@ namespace Pokemon_WPF_App
 
         private string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
 
-        public MarketPage(CardRepository cr,MarketCards m,User u)
+        private ObservableCollection<Card> wishlistedcards = new ObservableCollection<Card>();
+
+        public MarketPage(CardRepository cr, MarketCards m, User u)
         {
             InitializeComponent();
             repo = cr;
             market = m;
-            currentUser = u; 
+            currentUser = u;
             foreach (Card card in repo.GetAllCards())
             {
-
-                market.AddCard(card); 
+                market.AddCard(card);
             }
+
             // Set the data context for the MarketPage
             DataContext = market;
+
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Pokemon_WPF_App
             else
             {
                 // Filter the market cards based on the search term
-                
+
                 market.FilteredMarketCards = new ObservableCollection<Card>(
                     market.MC.Where(card => card.CardName.ToLower().Contains(searchTerm)));
             }
@@ -105,7 +105,7 @@ namespace Pokemon_WPF_App
         }
 
         /// <summary>
-        /// Event when wishlist
+        /// Pedro Code
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -125,7 +125,7 @@ namespace Pokemon_WPF_App
                 SqlCommand command = new SqlCommand(query, connection);
 
                 // Add parameters to the command object
-                command.Parameters.AddWithValue("@userId",currentUser.UserId );
+                command.Parameters.AddWithValue("@userId", currentUser.UserId);
                 command.Parameters.AddWithValue("@cardId", GetCardFromWishListButton(Button).CardID);
 
                 // Execute the query
@@ -151,6 +151,52 @@ namespace Pokemon_WPF_App
 
             // If the parent Border is found, get the Card object from its DataContext
             return cardBorder?.DataContext as Card;
+        }
+
+        /// <summary>
+        /// Pedro added 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WishlistView_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the wishlist cards
+            var wishList = repo.GetUserWishListedCards(currentUser.UserId);
+
+            if (wishList.Count != 0)
+            {
+                // Update the market cards with the wishlist cards
+                market.MC.Clear();
+                foreach (Card card in wishList)
+                {
+                    market.MC.Add(card);
+                }
+
+                // Update the filtered market cards to show the wishlist cards
+                market.FilteredMarketCards = new ObservableCollection<Card>(market.MC);
+
+            }
+        }
+
+        /// <summary>
+        /// Pedro added this 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResetMarketCards_Click(object sender, RoutedEventArgs e)
+        {
+            // Get all cards
+            var allCards = repo.GetAllCards();
+
+            // Update the market cards with all cards
+            market.MC.Clear();
+            foreach (Card card in allCards)
+            {
+                market.MC.Add(card);
+            }
+
+            // Update the filtered market cards to show all cards
+            market.FilteredMarketCards = new ObservableCollection<Card>(market.MC);
         }
     }
 }
