@@ -15,7 +15,9 @@
     <None Remove="Images\pokemon-login-grid-background-3.jpg" />
     <None Remove="Images\pokemon-signup-grid-background.jpg" />
     <None Remove="Images\pokemon-user-library-background.jpg" />
+    <None Remove="Sounds\login-button-sound-2.wav" />
     <None Remove="Sounds\login-button-sound.wav" />
+    <None Remove="Sounds\sign-up-button-sound-2.wav" />
     <None Remove="Sounds\sign-up-button-sound.wav" />
   </ItemGroup>
 
@@ -31,7 +33,13 @@
     <Resource Include="Images\pokemon-login-grid-background-3.jpg" />
     <Resource Include="Images\pokemon-signup-grid-background.jpg" />
     <Resource Include="Images\pokemon-user-library-background.jpg" />
+    <Content Include="Sounds\login-button-sound-2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\login-button-sound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\sign-up-button-sound-2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\sign-up-button-sound.wav">

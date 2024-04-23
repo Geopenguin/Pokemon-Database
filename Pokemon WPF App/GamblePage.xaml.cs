@@ -84,17 +84,15 @@ namespace Pokemon_WPF_App
 
         private void ClaimButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the clicked button
             Button claimButton = sender as Button;
-
-            // Find the Card object associated with the clicked button
             Card claimedCard = GetCardFromButton(claimButton);
-
-            // Get the currently logged-in user's ID
-            int loggedInUserId = GetLoggedInUserId(); // You need to implement this method
+            int loggedInUserId = currentUser.UserId;
 
             // Insert the claimed card into the User.UserCards table
             InsertCardForUser(claimedCard, loggedInUserId);
+
+            // Add the claimed card to the user's library
+            currentUser.Cards.Add(claimedCard);
         }
 
         private Card GetCardFromButton(Button button)

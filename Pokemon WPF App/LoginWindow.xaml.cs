@@ -34,8 +34,8 @@ namespace Pokemon_WPF_App
         private void PreloadSounds()
         {
             // Load sounds and prepare players
-            LoadAndPrepareSound("Sounds/login-button-sound.wav");
-            LoadAndPrepareSound("Sounds/sign-up-button-sound.wav");
+            LoadAndPrepareSound("Sounds/login-button-sound-2.wav");
+            LoadAndPrepareSound("Sounds/sign-up-button-sound-2.wav");
         }
         private void LoadAndPrepareSound(string path)
         {
@@ -59,7 +59,7 @@ namespace Pokemon_WPF_App
             // If successful, show the main window
             if (user != null)
             {
-                PlaySound("Sounds/login-button-sound.wav");
+                PlaySound("Sounds/login-button-sound-2.wav");
                 MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();
                 this.Close();
@@ -72,7 +72,7 @@ namespace Pokemon_WPF_App
 
         private void btnSignup_Click(object sender, RoutedEventArgs e)
         {
-            PlaySound("Sounds/sign-up-button-sound.wav");
+            PlaySound("Sounds/sign-up-button-sound-2.wav");
             SignupWindow signupWindow = new SignupWindow();
             signupWindow.Show();
             this.Close();

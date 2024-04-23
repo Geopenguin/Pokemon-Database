@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Pokemon_WPF_App
 {
@@ -115,6 +116,117 @@ namespace Pokemon_WPF_App
             }
 
             return cardsList;
+        }
+
+        public void CreateNewDeck(int userId, string deckName)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO [User].Deck (UserID, DeckName, CreatedOn) VALUES (@UserId, @DeckName, GETDATE());";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@DeckName", deckName);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<Card> GetDeckCards(int userId, string deckName)
+        {
+            List<Card> deckCards = new List<Card>();
+
+            string query = @"
+        SELECT c.CardID, c.SetID, c.EnergyTypeID, c.Rarity, c.CardType, c.HitPoints, c.CardName, c.TrainerEffect, c.ImageUrl
+        FROM [User].Deck d
+        JOIN [User].DeckCard dc ON d.DeckID = dc.DeckID
+        JOIN Cards.Cards c ON dc.CardID = c.CardID
+        WHERE d.UserID = @UserId AND d.DeckName = @DeckName
+    ";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@DeckName", deckName);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Card card = new Card(
+                                reader.GetInt32(0), // card id
+                                reader.GetInt32(1), // card setid
+                                reader.GetInt32(2), // card energy type id
+                                reader.GetString(3), // card rarity
+                                reader.GetString(4), // cardtype
+                                reader.GetInt32(5), // hitpoints
+                                reader.GetString(6), // CardName
+                                reader.IsDBNull(7) ? null : reader.GetString(7), // trainer effect, nullable
+                                reader.GetString(8) // image url
+                            );
+                            deckCards.Add(card);
+                        }
+                    }
+                }
+            }
+
+            return deckCards;
+        }
+
+        public List<string> GetUserDeckNames(int userId)
+        {
+            List<string> deckNames = new List<string>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT DeckName FROM [User].Deck WHERE UserID = @UserId;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string deckName = reader.GetString(0);
+                            deckNames.Add(deckName);
+                        }
+                    }
+                }
+            }
+            return deckNames;
+        }
+
+        public void DeleteDeck(int userId, string deckName)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM [User].Deck WHERE UserID = @UserId AND DeckName = @DeckName;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@DeckName", deckName);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AddCardToDeck(int deckID, int cardID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO [User].DeckCard (DeckID, CardID) VALUES (@DeckID, @CardID);";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DeckID", deckID);
+                    command.Parameters.AddWithValue("@CardID", cardID);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
     }
