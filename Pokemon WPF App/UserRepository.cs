@@ -11,7 +11,6 @@ namespace Pokemon_WPF_App
     public class UserRepository
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
-
         public bool RegisterUser(string username, string email, string password)
         {
             string query = "INSERT INTO [User].[Users] (Username, Email, Password) VALUES (@Username, @Email, @Password)";
