@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,10 +33,13 @@ namespace Pokemon_WPF_App
         private int _slotIteration;
         private readonly List<Card> _finalCards;
         private int _cardIndex; // Track the index of the card being generated
+        private Dictionary<string, IWavePlayer> wavePlayers = new Dictionary<string, IWavePlayer>();
+        private Dictionary<string, AudioFileReader> audioFiles = new Dictionary<string, AudioFileReader>();
 
         public GamblePage(User user)
         {
             InitializeComponent();
+            PreloadSounds();
             currentUser = user;
 
             // Create a collection of all available cards
@@ -43,10 +49,37 @@ namespace Pokemon_WPF_App
             gamblingCards = new ObservableCollection<Card>();
 
             _slotTimer = new DispatcherTimer();
-            _slotTimer.Interval = TimeSpan.FromMilliseconds(200); // Adjust this value to control the speed of the slot machine effect
+            _slotTimer.Interval = TimeSpan.FromMilliseconds(100); // Adjust this value to control the speed of the slot machine effect
             _slotTimer.Tick += SlotTimer_Tick;
 
             _finalCards = new List<Card>();
+        }
+
+
+        private void PreloadSounds()
+        {
+        // Load sounds and prepare players
+        LoadAndPrepareSound("Sounds/gamble-sound.wav");
+        }
+        private void LoadAndPrepareSound(string path)
+        {
+            // Instantiate WaveOutEvent and AudioFileReader objects
+            var player = new WaveOutEvent();
+            var audioFile = new AudioFileReader(path);
+            player.Init(audioFile);
+            // Store those two objects in dictionaries, keyed by the sound file path (allows quick access for playing the sound)
+            wavePlayers[path] = player;
+            audioFiles[path] = audioFile;
+        }
+        private void PlaySound(string soundPath)
+        {
+            // Retrieve the WaveOutEvent player and AudioFileReader for the given sound file from the dictionaries
+            if (wavePlayers.TryGetValue(soundPath, out var player) && audioFiles.TryGetValue(soundPath, out var file))
+            {
+                // Set AudioFileReader to 0 to ensure the sound file plays from the beginning
+                file.Position = 0;
+                player.Play();
+            }
         }
 
         private void GambleButton_Click(object sender, RoutedEventArgs e)
@@ -69,41 +102,41 @@ namespace Pokemon_WPF_App
         private void SlotTimer_Tick(object sender, EventArgs e)
         {
             _slotIteration++;
-
-            if (_cardIndex < 3) // Generate a new card if the card index is less than 3
-            {
-                if (_slotIteration <= 1) // Adjust this value to control the number of iterations
+                if (_cardIndex < 3) // Generate a new card if the card index is less than 3
                 {
-                    // Randomly select a card from the allCards collection
-                    Random random = new Random();
-                    int cardCount = allCards.Count;
-                    int index = random.Next(cardCount);
-                    Card card = allCards[index];
-
-                    // Add the selected card to the final cards list
-                    _finalCards.Add(card);
-
-                    // Update the ItemsControl with all the cards in the final cards list
-                    GamblingCardsItemsControl.Items.Clear();
-                    foreach (Card finalCard in _finalCards)
+                    if (_slotIteration <= 1) // Adjust this value to control the number of iterations
                     {
-                        GamblingCardsItemsControl.Items.Add(finalCard);
-                    }
+                        // Randomly select a card from the allCards collection
+                        Random random = new Random();
+                        int cardCount = allCards.Count;
+                        int index = random.Next(cardCount);
+                        Card card = allCards[index];
+
+                        // Add the selected card to the final cards list
+                        _finalCards.Add(card);
+
+                        // Update the ItemsControl with all the cards in the final cards list
+                        GamblingCardsItemsControl.Items.Clear();
+                        foreach (Card finalCard in _finalCards)
+                        {
+                            GamblingCardsItemsControl.Items.Add(finalCard);
+                        }
                 }
                 else
-                {
-                    // Stop the slot machine effect for the current card
-                    _slotTimer.Stop();
-
-                    _slotIteration = 0;
-                    _cardIndex++; // Move to the next card
-
-                    // Start the slot machine effect for the next card
-                    if (_cardIndex < 3)
                     {
-                        _slotTimer.Start();
-                    }
+                        // Stop the slot machine effect for the current card
+                        _slotTimer.Stop();
+
+                        _slotIteration = 0;
+                        _cardIndex++; // Move to the next card
+
+                        // Start the slot machine effect for the next card
+                        if (_cardIndex < 3)
+                        {
+                            _slotTimer.Start();
+                        }
                 }
+                PlaySound("Sounds/gamble-sound.wav");
             }
         }
         private void ClaimButton_Click(object sender, RoutedEventArgs e)
