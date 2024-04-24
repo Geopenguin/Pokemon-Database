@@ -17,10 +17,10 @@
         <TextBlock Text="Admin Panel" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" />
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Manage Users" Margin="5" Padding="10" FontSize="16"  />
-            <Button Content="Manage Cards" Margin="5" Padding="10" FontSize="16" />
-            <Button Content="View Reports" Margin="5" Padding="10" FontSize="16"  />
-            <Button Content="Settings" Margin="5" Padding="10" FontSize="16"/>
+            <Button Content="AG1" Margin="5" Padding="10" FontSize="16" Click="AgQuery1_Click"  />
+            <Button Content="AG2" Margin="5" Padding="10" FontSize="16" Click="AgQuery2_Click"/>
+            <Button Content="AG3" Margin="5" Padding="10" FontSize="16" Click="AgQuery3_Click" />
+            <Button Content="AG4" Margin="5" Padding="10" FontSize="16" Click="AgQuery4_Click"/>
         </StackPanel>
     </Grid>
 </Page>

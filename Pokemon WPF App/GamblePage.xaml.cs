@@ -103,13 +103,13 @@ namespace Pokemon_WPF_App
             {
                 connection.Open();
 
-                string query = "INSERT INTO [User].Gacha (UserID, CardID, PullTimeStamp) VALUES (@UserId, @CardId, GETDATE())";
+                string query = "INSERT INTO [User].GachaHistory (UserID, CardID, PullTimeStamp) VALUES (@UserId, @CardId, SYSDATETIME())";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@UserId", userId);
                     command.Parameters.AddWithValue("@CardId", cardId);
-
+                    
                     command.ExecuteNonQuery();
                 }
             }
