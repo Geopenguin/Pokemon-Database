@@ -23,6 +23,7 @@ namespace Pokemon_WPF_App
         public AdminPage()
         {
             InitializeComponent();
+            
         }
     }
 }

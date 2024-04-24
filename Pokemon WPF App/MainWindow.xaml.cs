@@ -19,6 +19,7 @@ namespace Pokemon_WPF_App
         private MarketPage marketPage;
         private GamblePage gamblePage;
         private User user;
+        private AdminPage AdminPage; 
 
         public MainWindow(User user)
         {
@@ -28,14 +29,16 @@ namespace Pokemon_WPF_App
             // Create instances of the pages
             CardRepository repo = new CardRepository();
             MarketCards market = new MarketCards();
+            AdminPage = new AdminPage(); 
             userLibraryPage = new UserLibraryPage(repo, user);
             marketPage = new MarketPage(repo, market,user);
             gamblePage = new GamblePage(user);
+            
 
             // Navigate to the initial page
             LibraryFrame.NavigationService.Navigate(userLibraryPage);
         }
-
+        
         private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Get the selected TabItem
@@ -55,6 +58,9 @@ namespace Pokemon_WPF_App
                     case "Gamble":
                         GambleFrame.NavigationService.Navigate(gamblePage);
                         break;
+                    case "Admin":
+                        AdminFrame.NavigationService.Navigate(AdminPage);
+                        break;                   
                 }
             }
         }

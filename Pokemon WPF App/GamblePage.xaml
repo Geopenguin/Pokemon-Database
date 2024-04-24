@@ -38,18 +38,10 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
-
-
-                                <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
-
                                 <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />
-
-
+                                <!--<Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />-->
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />
-                                    <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
-                                    <TextBlock Text="{Binding TrainerEffect}" FontWeight="Bold" Margin="5,0" />
-                                    <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" Foreground="Black"/>
                                 </StackPanel>
 
                                 <Button Grid.Row="4" Content="Claim" Margin="5" Click="ClaimButton_Click"  />

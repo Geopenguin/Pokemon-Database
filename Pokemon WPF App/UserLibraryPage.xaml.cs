@@ -1,21 +1,7 @@
-﻿using Pokemon_WPF_App;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Pokemon_WPF_App
 {
@@ -101,24 +87,24 @@ namespace Pokemon_WPF_App
             // Get the Button that was clicked
             Button button = sender as Button;
 
-            // Find the parent ListBox
+            // Find the parent Border control
             DependencyObject parent = button;
-            while (parent != null && !(parent is ListBox))
+            while (parent != null && !(parent is Border))
             {
                 parent = VisualTreeHelper.GetParent(parent);
             }
 
-            ListBox listBox = parent as ListBox;
+            Border border = parent as Border;
 
-            // Get the Card object from the ListBox's DataContext
-            Card cardToRemove = listBox?.DataContext as Card;
+            // Get the Card object from the Border's DataContext
+            Card cardToRemove = border?.DataContext as Card;
 
             // Remove the Card object from the Cards collection
             if (cardToRemove != null)
             {
                 repo.RemoveCardFromUser(cardToRemove.UserCardId);
             }
-            RefreshLib(); 
+            RefreshLib();
         }
     }
 }

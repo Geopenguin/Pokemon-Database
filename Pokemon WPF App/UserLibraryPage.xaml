@@ -22,7 +22,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ListBox SelectionMode="Single">
+                        
                             <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="5" Margin="5">
                                 <Grid Width="200" Height="300">
                                     <Grid.RowDefinitions>
@@ -34,20 +34,15 @@
 
                                     <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" />
 
-                                    <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="UniformToFill" />
+                                    <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />
 
                                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding CardName}" FontWeight="Bold" Margin="5,0"/>
-                                        <TextBlock Text="{Binding Type}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding Attack}" FontWeight="Bold" Margin="5,0" />
-                                        <TextBlock Text="{Binding Defense}" FontWeight="Bold" Margin="5,0" />
                                     </StackPanel>
 
                                     <Button Grid.Row="3" Content="Remove" Command="{Binding RemoveCardCommand}" CommandParameter="{Binding}" Click="RemoveButton_Click"/>
                                 </Grid>
                             </Border>
-                        </ListBox>
+                        
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -40,7 +40,6 @@ namespace Pokemon_WPF_App
 
         private string connectionString = ConfigurationManager.ConnectionStrings["Pokemon"].ConnectionString;
 
-        private ObservableCollection<Card> wishlistedcards = new ObservableCollection<Card>();
 
         public MarketPage(CardRepository cr, MarketCards m, User u)
         {
