@@ -8,6 +8,35 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GamblePage">
 
+    <Page.Resources>
+        <Style x:Key="PokemonButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="#000000" BorderThickness="2"
+                            CornerRadius="20">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gold"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/pokemon-gambling.jpg"
@@ -19,32 +48,35 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <ItemsControl x:Name="GamblingCardsItemsControl">
+            <ItemsControl x:Name="GamblingCardsItemsControl" HorizontalContentAlignment="Center">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel />
+                        <UniformGrid Columns="3" HorizontalAlignment="Center" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="5" Margin="5">
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="5" Margin="10">
                             <Grid Width="200" Height="300">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />
-                                <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />
-                                <!--<Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />-->
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" Foreground="Black"/>
-                                </StackPanel>
+                                <!--<TextBlock Text="{Binding CardName}" FontWeight="Bold" HorizontalAlignment="Center" />-->
 
-                                <Button Grid.Row="4" Content="Claim" Margin="5" Click="ClaimButton_Click"  />
+                                <Image Grid.Row="1" Source="{Binding ImagePath}" Stretch="Fill" />
+
+                                <!--<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    --><!--<TextBlock Text="{Binding EnergyTypeID}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding HP}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding TrainerEffect}" FontWeight="Bold" Margin="5,0" />
+                                    <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" />--><!--
+                                </StackPanel>-->
+
+                                <Button Grid.Row="3" Content="Claim" Margin="5" Click="ClaimButton_Click" />
                             </Grid>
                         </Border>
                     </DataTemplate>
@@ -53,7 +85,7 @@
         </ScrollViewer>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button x:Name="GambleButton" Content="Gamble" Click="GambleButton_Click" Margin="5" />
+            <Button x:Name="GambleButton" Content="Gamble" Click="GambleButton_Click" Margin="5" Style="{StaticResource PokemonButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Page>
