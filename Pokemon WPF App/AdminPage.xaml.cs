@@ -145,11 +145,11 @@ namespace Pokemon_WPF_App
                     while (reader.Read())
                     {
                         string userID = reader.GetString(0);
-                        string userName = reader.GetString(1);
+                        string CardName = reader.GetString(1);
                         string rarity = reader.GetString(2);
                         int cardCount = reader.GetInt32(3);
 
-                        MessageBox.Show($"User ID: {userID}, User Name: {userName}, Rarity: {rarity}, Card Count: {cardCount}");
+                        MessageBox.Show($"User ID: {userID}, Card Name: {CardName}, Rarity: {rarity}, Card Count: {cardCount}");
                     }
                 }
             }

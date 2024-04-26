@@ -57,25 +57,25 @@ namespace Pokemon_WPF_App
 
         private void PreloadSounds()
         {
-        // Load sounds and prepare players
+        // Load sounds 
         LoadAndPrepareSound("Sounds/gamble-sound.wav");
         }
         private void LoadAndPrepareSound(string path)
         {
-            // Instantiate WaveOutEvent and AudioFileReader objects
+            // Instantiate 
             var player = new WaveOutEvent();
             var audioFile = new AudioFileReader(path);
             player.Init(audioFile);
-            // Store those two objects in dictionaries, keyed by the sound file path (allows quick access for playing the sound)
+            // Store those two objects in dictionaries
             wavePlayers[path] = player;
             audioFiles[path] = audioFile;
         }
         private void PlaySound(string soundPath)
         {
-            // Retrieve the WaveOutEvent player and AudioFileReader for the given sound file from the dictionaries
+            // Retrieve 
             if (wavePlayers.TryGetValue(soundPath, out var player) && audioFiles.TryGetValue(soundPath, out var file))
             {
-                // Set AudioFileReader to 0 to ensure the sound file plays from the beginning
+                //to ensure the sound file plays from the beginning
                 file.Position = 0;
                 player.Play();
             }
@@ -83,10 +83,10 @@ namespace Pokemon_WPF_App
 
         private void GambleButton_Click(object sender, RoutedEventArgs e)
         {
-            // Clear the previous gambling cards
+            // Clear
             GamblingCardsItemsControl.Items.Clear();
 
-            // Get the card repository instance
+            // Get the card
             CardRepository cardRepository = new CardRepository();
             allCards = cardRepository.GetAllCards();
 
@@ -96,6 +96,8 @@ namespace Pokemon_WPF_App
 
             // Start the slot machine effect
             _slotTimer.Start();
+
+            
         }
 
         private void SlotTimer_Tick(object sender, EventArgs e)
@@ -151,7 +153,12 @@ namespace Pokemon_WPF_App
 
             // Insert the claimed card into the User.UserCards table
             InsertCardForUser(claimedCard, loggedInUserId);
+
+            GachaHistory(claimedCard, loggedInUserId);
+
+            claimButton.IsEnabled = false; 
         }
+        
 
         private Card GetCardFromButton(Button button)
         {
@@ -199,6 +206,30 @@ namespace Pokemon_WPF_App
         private int GetLoggedInUserId()
         {
             return currentUser.UserId;
+        }
+
+        //Method to insert into Gacha table too 
+        private void GachaHistory(Card card, int userId)
+        {
+            // SQL query to insert the card into the User.UserCards table
+            string query = "INSERT INTO [User].[GachaHistory] (UserId, CardId) VALUES (@UserId, @CardId)";
+
+            // Create a connection to the database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Open the connection
+                connection.Open();
+
+                // Create a command object with the query and connection
+                SqlCommand command = new SqlCommand(query, connection);
+
+                // Add parameters
+                command.Parameters.AddWithValue("@UserId", userId);
+                command.Parameters.AddWithValue("@CardId", card.CardID);
+
+                // Execute the query
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

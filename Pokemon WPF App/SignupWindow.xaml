@@ -44,7 +44,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="20">
-            <TextBlock Text="PokemonDB" Style="{StaticResource PokemonFont}"/>
+            <TextBlock Text="PokemonTCG DB" Style="{StaticResource PokemonFont}"/>
             <TextBlock Text="Signup" FontSize="24" FontWeight="Bold"
                        HorizontalAlignment="Center" Margin="0,0,0,30"
                        FontFamily="Segoe UI" Foreground="Black"/>

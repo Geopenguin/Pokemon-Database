@@ -76,7 +76,7 @@
                                     <TextBlock Text="{Binding Rarity}" FontWeight="Bold" Margin="5,0" />--><!--
                                 </StackPanel>-->
 
-                                <Button Grid.Row="3" Content="Claim" Margin="5" Click="ClaimButton_Click" />
+                                <Button x:Name ="ClaimButton" Grid.Row="3" Content="Claim" Margin="5" Click="ClaimButton_Click" />
                             </Grid>
                         </Border>
                     </DataTemplate>
